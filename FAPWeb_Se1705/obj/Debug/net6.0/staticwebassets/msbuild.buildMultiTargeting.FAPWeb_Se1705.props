@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FAPWeb_Se1705.props" />
+</Project>

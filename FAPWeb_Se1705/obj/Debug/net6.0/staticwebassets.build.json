@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "Z1P3yTWZQp6yxv9QGx1MFjeqnsKGXq/RapdN240VLyw=",
+  "Source": "FAPWeb_Se1705",
+  "BasePath": "_content/FAPWeb_Se1705",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FAPWeb_Se1705\\wwwroot",
+      "Source": "FAPWeb_Se1705",
+      "ContentRoot": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\",
+      "BasePath": "_content/FAPWeb_Se1705",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
