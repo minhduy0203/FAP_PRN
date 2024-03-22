@@ -28,6 +28,12 @@ namespace FAPWeb_Se1705
             builder.Services.AddTransient<ISessionRepostiory, SessionRepository>();
             builder.Services.AddTransient<IRoomRepository, RoomRepository>();
             builder.Services.AddTransient<IRoomService, RoomService>();
+            builder.Services.AddTransient<ICourseRepository, CourseRepository>();
+            builder.Services.AddTransient<ICourseService, CourseService>();
+            builder.Services.AddTransient<IGroupRepository, GroupRepository>();
+            builder.Services.AddTransient<IGroupService, GroupService>();
+            builder.Services.AddTransient<IInstructorRepository, InstructorRepository>();
+            builder.Services.AddTransient<IInstructorService, InstructorService>();
             builder.Services.AddRazorPages();
 
         }
