@@ -11,7 +11,6 @@ namespace FAPWeb_Se1705.Models
         }
 
         public string GroupName { get; set; } = null!;
-        public int CourseId { get; set; }
 
         public virtual ICollection<Session> Sessions { get; set; }
     }

@@ -15,3 +15,19 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/minhd/Desktop/PE/FAPWeb_Se1705/FAPWeb_Se1705/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhd/Desktop/PE/FAPWeb_Se1705/FAPWeb_Se1705/Pages/TimeTable/ImportSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGltZVRhYmxlXEltcG9ydFNjaGVkdWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhd/Desktop/PE/FAPWeb_Se1705/FAPWeb_Se1705/Pages/TimeTable/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGltZVRhYmxlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minhd/Desktop/PE/FAPWeb_Se1705/FAPWeb_Se1705/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

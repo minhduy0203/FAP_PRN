@@ -59,3 +59,5 @@ C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\bin\Debug\net6.0\runtimes\
 C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\obj\Debug\net6.0\FAPWeb_Se1705.csproj.CopyComplete
+C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\obj\Debug\net6.0\FAPWeb_Se1705.RazorAssemblyInfo.cache
+C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\obj\Debug\net6.0\FAPWeb_Se1705.RazorAssemblyInfo.cs

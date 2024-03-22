@@ -1,4 +1,7 @@
+using FAPWeb_Se1705.Logics;
 using FAPWeb_Se1705.Models;
+using FAPWeb_Se1705.Repository;
+using FAPWeb_Se1705.Service;
 using Microsoft.EntityFrameworkCore;
 
 namespace FAPWeb_Se1705
@@ -20,6 +23,9 @@ namespace FAPWeb_Se1705
         private static void ConfigureService(WebApplicationBuilder builder)
         {
             builder.Services.AddDbContext<FAPPRJContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("MyConstr")));
+            builder.Services.AddTransient<TimeTableLogic>();
+            builder.Services.AddTransient<ISessionService, SessionService>();
+            builder.Services.AddTransient<ISessionRepostiory, SessionRepository>();
             builder.Services.AddRazorPages();
 
         }

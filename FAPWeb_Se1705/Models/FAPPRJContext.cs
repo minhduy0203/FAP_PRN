@@ -19,8 +19,10 @@ namespace FAPWeb_Se1705.Models
         public virtual DbSet<Course> Courses { get; set; } = null!;
         public virtual DbSet<Group> Groups { get; set; } = null!;
         public virtual DbSet<Instructor> Instructors { get; set; } = null!;
+        public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Room> Rooms { get; set; } = null!;
         public virtual DbSet<Session> Sessions { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -64,8 +66,6 @@ namespace FAPWeb_Se1705.Models
                     .IsUnicode(false)
                     .HasColumnName("groupName")
                     .IsFixedLength();
-
-                entity.Property(e => e.CourseId).HasColumnName("courseId");
             });
 
             modelBuilder.Entity<Instructor>(entity =>
@@ -95,6 +95,19 @@ namespace FAPWeb_Se1705.Models
                     .HasColumnName("lastName");
             });
 
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.ToTable("Role");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.RoleName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("role_name")
+                    .IsFixedLength();
+            });
+
             modelBuilder.Entity<Room>(entity =>
             {
                 entity.HasKey(e => e.RoomName);
@@ -112,9 +125,7 @@ namespace FAPWeb_Se1705.Models
             {
                 entity.ToTable("Session");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CourseCode)
                     .HasMaxLength(10)
@@ -168,6 +179,36 @@ namespace FAPWeb_Se1705.Models
                     .HasForeignKey(d => d.RoomName)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Session_Room");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("User");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("password");
+
+                entity.Property(e => e.RoleId).HasColumnName("role_id");
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RoleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_User_Role");
             });
 
             OnModelCreatingPartial(modelBuilder);
