@@ -26,6 +26,8 @@ namespace FAPWeb_Se1705
             builder.Services.AddTransient<TimeTableLogic>();
             builder.Services.AddTransient<ISessionService, SessionService>();
             builder.Services.AddTransient<ISessionRepostiory, SessionRepository>();
+            builder.Services.AddTransient<IRoomRepository, RoomRepository>();
+            builder.Services.AddTransient<IRoomService, RoomService>();
             builder.Services.AddRazorPages();
 
         }

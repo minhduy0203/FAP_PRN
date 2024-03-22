@@ -5,6 +5,7 @@ namespace FAPWeb_Se1705.Service
     public interface ISessionService
     {
         public void AddSessions(List<Session> sessions);
-        public void GetSessions();
+        public List<Session> GetSessions();
+        public List<Session> GetSessionsByDay(char day);
     }
 }

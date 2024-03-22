@@ -21,5 +21,10 @@ namespace FAPWeb_Se1705.Repository
         {
             return context.Sessions.ToList();
         }
+
+        public List<Session> GetSessions(char day)
+        {
+            return context.Sessions.Where((s) => (String.IsNullOrEmpty(day.ToString()) && s.TimeSlot.Contains("2")) || s.TimeSlot.Contains(day.ToString())).ToList();
+        }
     }
 }

@@ -2,3 +2,51 @@
 @model FAPWeb_Se1705.Pages.TimeTable.IndexModel
 @{
 }
+
+<table>
+    <tr>
+        <td>Room</td>
+        <td>Slot 1</td>
+        <td>Slot 2</td>
+        <td>Slot 3</td>
+        <td>Slot 4</td>
+
+    </tr>
+    @foreach (Room room in Model.Rooms)
+    {
+        <tr>
+            <td>@room.RoomName</td>
+            @for (int i = 1; i <= 4; i++)
+            {
+                if (i == 1 || i == 2)
+                {
+                    List<Session> sessions = Model.Sessions
+                    .Where(s => s.TimeSlot[0] == 'A' && s.RoomName == room.RoomName && s.TimeSlot[i] == Model.day)
+                    .ToList();
+                    <td>
+                        @foreach (Session session in sessions)
+                        {
+                            <span>
+                                @session.CourseCode - @session.GroupName - @session.InstructorCode
+                            </span>
+                            <br />
+
+                        }
+                    </td>
+                }
+                else if (i == 3 || i == 4)
+                {
+                    List<Session> sessions = Model.Sessions
+                    .Where(s => s.TimeSlot[0] == 'P' && s.RoomName == room.RoomName && s.TimeSlot[i - 2] == Model.day)
+                    .ToList();
+                    @foreach (Session session in sessions)
+                    {
+                        <div>
+                            @session.CourseCode - @session.GroupName - @session.InstructorCode
+                        </div>
+                    }
+                }
+            }
+        </tr>
+    }
+</table>

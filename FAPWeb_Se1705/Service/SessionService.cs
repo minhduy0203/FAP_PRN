@@ -17,9 +17,16 @@ namespace FAPWeb_Se1705.Service
             repostiory.AddSessions(sessions);
         }
 
-        public void GetSessions()
+        public List<Session> GetSessions()
         {
-            repostiory.GetSessions();
+            return repostiory.GetSessions();
         }
+
+        public List<Session> GetSessionsByDay(char day)
+        {
+            return repostiory.GetSessions(day);
+        }
+
+
     }
 }

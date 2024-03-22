@@ -7,5 +7,7 @@ namespace FAPWeb_Se1705.Repository
         public void AddSessions(List<Session> sessions);
 
         public List<Session> GetSessions();
+
+        public List<Session> GetSessions(char day);
     }
 }
