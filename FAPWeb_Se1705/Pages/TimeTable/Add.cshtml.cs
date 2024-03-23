@@ -38,9 +38,9 @@ namespace FAPWeb_Se1705.Pages.TimeTable
             GetData();
         }
 
-        public void OnPost(Session session)
+        public void OnPost(Models.Session session)
         {
-            List<Session> sessions = sessionService.GetSessions();
+            List<Models.Session> sessions = sessionService.GetSessions();
             if (TimeTableLogic.ValidateSession(sessions, session))
             {
                 sessionService.AddSession(session);

@@ -1,0 +1,81 @@
+﻿@page
+@model FAPWeb_Se1705.Pages.SessionPage.DetailModel
+@{
+}
+
+@if (Model.Session == null)
+{
+    <h1>Session not found</h1>
+}
+else
+{
+    <div>
+        <h1>Information</h1>
+        <h2>
+            Course:
+        </h2>
+        <h3>@Model.Session.CourseCode - @Model.Session.CourseCodeNavigation.CourseName</h3>
+        <h2>
+            Instructor:
+        </h2>
+        <h3>@Model.Session.InstructorCodeNavigation.FirstName @Model.Session.InstructorCodeNavigation.LastName </h3>
+    </div>
+
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Session.Id" />
+        <button asp-page-handler="Delete" type="submit">Delete</button>
+    </form>
+    <a>Update</a>
+    <h1>Schedule</h1>
+    <table>
+        <thead>
+        <td>
+            Slot
+        </td>
+        <td>
+            Thứ @Model.Session.TimeSlot[1]
+        </td>
+        <td>
+            Thứ @Model.Session.TimeSlot[2]
+        </td>
+
+        </thead>
+        @for (int i = 1; i <= 4; i++)
+        {
+            <tr>
+                <td>Slot @i</td>
+                @for (int j = 1; j <= 2; j++)
+                {
+                    <td>
+                        @if (Model.Session.TimeSlot[0] == 'A')
+                        {
+                            if (i == 1 || i == 2)
+                            {
+                                if (Model.Session.TimeSlot[j] == Model.Session.TimeSlot[i])
+                                {
+                                    <span>@Model.Session.CourseCode</span>
+                                }
+                            }
+
+                        }
+                        else if (Model.Session.TimeSlot[0] == 'P')
+                        {
+                            if (i == 3 || i == 4)
+                            {
+                                if (Model.Session.TimeSlot[j] == Model.Session.TimeSlot[i - 2])
+                                {
+                                    <span>@Model.Session.CourseCode</span>
+
+                                }
+                            }
+                        }
+
+
+                    </td>
+                }
+            </tr>
+
+        }
+    </table>
+
+}

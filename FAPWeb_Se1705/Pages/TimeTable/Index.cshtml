@@ -29,6 +29,7 @@
                             <span>
                                 @session.CourseCode - @session.GroupName - @session.InstructorCode
                             </span>
+                            <a asp-page="/SessionPage/Detail" asp-route-id="@session.Id" asp->View Detail</a>
                             <br />
 
                         }
@@ -39,12 +40,17 @@
                     List<Session> sessions = Model.Sessions
                     .Where(s => s.TimeSlot[0] == 'P' && s.RoomName == room.RoomName && s.TimeSlot[i - 2] == Model.day)
                     .ToList();
-                    @foreach (Session session in sessions)
-                    {
-                        <div>
-                            @session.CourseCode - @session.GroupName - @session.InstructorCode
-                        </div>
-                    }
+                    <td>
+
+                        @foreach (Session session in sessions)
+                        {
+                            <span>
+                                @session.CourseCode - @session.GroupName - @session.InstructorCode
+                            </span>
+                            <a asp-page="/SessionPage/Detail" asp-route-id="@session.Id" asp->View Detail</a>
+                            <br />
+                        }
+                    </td>
                 }
             }
         </tr>
