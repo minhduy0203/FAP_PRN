@@ -48,16 +48,21 @@ namespace FAPWeb_Se1705.Pages.SessionPage
                 List<Models.Session> sessions = sessionService.GetSessions();
                 Session UpdateSession = sessions.FirstOrDefault(s => s.Id == session.Id);
                 sessions.Remove(UpdateSession);
-                if (TimeTableLogic.ValidateSession(sessions, session))
+                try
                 {
-                    sessionService.UpdateSession(session);
-                    Message = "Update successfully";
+                    if (TimeTableLogic.ValidateSession(sessions, session))
+                    {
+                        sessionService.UpdateSession(session);
+                        Message = "Update successfully";
+                    }
 
                 }
-                else
+                catch (Exception e)
                 {
-                    throw new Exception("Update failed");
+
+                    Message = e.Message;
                 }
+
 
             }
             catch (Exception)

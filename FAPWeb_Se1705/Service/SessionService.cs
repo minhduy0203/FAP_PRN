@@ -1,4 +1,5 @@
-﻿using FAPWeb_Se1705.Models;
+﻿using FAPWeb_Se1705.Logics;
+using FAPWeb_Se1705.Models;
 using FAPWeb_Se1705.Repository;
 
 namespace FAPWeb_Se1705.Service
@@ -24,6 +25,7 @@ namespace FAPWeb_Se1705.Service
 
         public void AddSessions(List<Session> sessions)
         {
+            List<Session> sessionsDB = repostiory.GetSessions();
             foreach (Session session in sessions)
             {
                 session.TimeSlot = session.TimeSlot.Trim();
@@ -31,8 +33,21 @@ namespace FAPWeb_Se1705.Service
                 session.GroupName = session.GroupName.Trim();
                 session.CourseCode = session.CourseCode.Trim();
                 session.InstructorCode = session.InstructorCode.Trim();
+                try
+                {
+                    if (TimeTableLogic.ValidateSession(sessionsDB, session))
+                    {
+                        repostiory.AddSession(session);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    continue;
+                }
+
             }
-            repostiory.AddSessions(sessions);
+
         }
 
         public Session GetSession(int id)

@@ -32,10 +32,20 @@ namespace FAPWeb_Se1705.Logics
                     Session.TimeSlot = Timeslot;
                     Session.CourseCode = CourseCode;
                     Session.RoomName = Room;
-                    if (ValidateSession(result, Session))
+                    try
                     {
-                        result.Add(Session);
+                        if (ValidateSession(result, Session))
+                        {
+                            result.Add(Session);
+                        }
+
                     }
+                    catch (Exception)
+                    {
+
+                        continue;
+                    }
+
 
                 }
             }
@@ -49,23 +59,27 @@ namespace FAPWeb_Se1705.Logics
             {
                 if (ValidateTimeSlot(sessionCheck.TimeSlot, s.TimeSlot) && ValidateGroup(sessionCheck.GroupName, s.RoomName))
                 {
-                    return false;
+                    throw new Exception("Time slot and group is duplicated");
+                    //return false;
                 }
 
                 if (ValidateTimeSlot(sessionCheck.TimeSlot, s.TimeSlot) && ValidateTeacher(sessionCheck.InstructorCode, s.InstructorCode))
                 {
-                    return false;
+                    throw new Exception("Time slot and teacher is duplicated");
+                    //return false;
 
                 }
 
                 if (ValidateTimeSlot(sessionCheck.TimeSlot, s.TimeSlot) && ValidateRoom(sessionCheck.RoomName, s.RoomName))
                 {
-                    return false;
+                    throw new Exception("Time slot and room is duplicated");
+                    //return false;
                 }
 
                 if (ValidateRoom(sessionCheck.RoomName, s.RoomName) && ValidateSubject(sessionCheck.CourseCode, s.CourseCode))
                 {
-                    return false;
+                    throw new Exception("room and subject is duplicated ");
+                    //return false;
                 }
             }
             return true;
@@ -99,17 +113,43 @@ namespace FAPWeb_Se1705.Logics
             return roomA.Equals(roomB);
         }
 
+        //timeA from input , time B from db
         public static bool ValidateTimeSlot(string timeA, string timeB)
         {
             bool result = false;
-           
+
             timeA = timeA.Trim();
             timeB = timeB.Trim();
 
             if (timeA.Length != 3 || timeB.Length != 3)
             {
-                throw new Exception("Input is not valid");
+                throw new Exception("Timeslot must contain 3 character");
             }
+
+            if (timeA[0] != 'A' && timeA[0] != 'P')
+            {
+                throw new Exception("Time slot should start with A or P");
+            }
+
+            if (timeA.Length == 3)
+            {
+                for (int i = 1; i <= 2; i++)
+                {
+                    if (!timeA[i].ToString().All(char.IsDigit))
+                    {
+                        throw new Exception("Time slot must contain digit");
+                    }
+                    else
+                    {
+                        int number = Int32.Parse(timeA[i].ToString());
+                        if (number < 2 || number > 8)
+                        {
+                            throw new Exception("Digit must range from 2 to 8");
+                        }
+                    }
+                }
+            }
+
 
             if (timeA[0] == timeB[0])
             {

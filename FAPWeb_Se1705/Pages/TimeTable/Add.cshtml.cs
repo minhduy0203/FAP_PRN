@@ -13,15 +13,13 @@ namespace FAPWeb_Se1705.Pages.TimeTable
         private ICourseService courseService;
         private IGroupService groupService;
         private IInstructorService instructorService;
-        private TimeTableLogic timeTableLogic;
         private ISessionService sessionService;
-        public AddModel(IRoomService roomService, ICourseService courseService, IGroupService groupService, IInstructorService instructorService, TimeTableLogic timeTableLogic, ISessionService sessionService)
+        public AddModel(IRoomService roomService, ICourseService courseService, IGroupService groupService, IInstructorService instructorService, ISessionService sessionService)
         {
             this.roomService = roomService;
             this.courseService = courseService;
             this.groupService = groupService;
             this.instructorService = instructorService;
-            this.timeTableLogic = timeTableLogic;
             this.sessionService = sessionService;
         }
 
@@ -29,6 +27,8 @@ namespace FAPWeb_Se1705.Pages.TimeTable
         public List<Course> Courses { get; set; }
         public List<Group> Groups { get; set; }
         public List<Instructor> Instructors { get; set; }
+
+        public Session SessionAdd { get; set; }
         public string Message { get; set; }
 
 
@@ -41,15 +41,20 @@ namespace FAPWeb_Se1705.Pages.TimeTable
         public void OnPost(Models.Session session)
         {
             List<Models.Session> sessions = sessionService.GetSessions();
-            if (TimeTableLogic.ValidateSession(sessions, session))
+            try
             {
-                sessionService.AddSession(session);
-            }
-            else
-            {
-                Message = "Add error";
-            }
+                if (TimeTableLogic.ValidateSession(sessions, session))
+                {
+                    sessionService.AddSession(session);
+                    Message = "Add session successfully";
+                }
 
+            }
+            catch (Exception ex)
+            {
+                Message = ex.Message;
+            }
+            SessionAdd = session;
             GetData();
         }
 

@@ -5,35 +5,35 @@
 
 <form method="post">
     Course:
-    <select name="CourseCode">
+    <select asp-for="SessionAdd.CourseCode" name="CourseCode">
         @foreach (Course course in Model.Courses)
         {
             <option value="@course.CourseCode">@course.CourseCode</option>
         }
     </select> <br />
     Group:
-    <select name="GroupName">
+    <select asp-for="SessionAdd.GroupName" name="GroupName">
         @foreach (Group group in Model.Groups)
         {
             <option value="@group.GroupName">@group.GroupName</option>
         }
     </select> <br />
     InstructorCode
-    <select name="InstructorCode">
+    <select asp-for="SessionAdd.InstructorCode" name="InstructorCode">
         @foreach (Instructor instructor in Model.Instructors)
         {
             <option value="@instructor.InstructorCode">@instructor.FirstName @instructor.LastName</option>
         }
     </select> <br />
     Room name:
-    <select name="RoomName">
+    <select asp-for="SessionAdd.RoomName" name="RoomName">
         @foreach (Room room in Model.Rooms)
         {
             <option value="@room.RoomName">@room.RoomName</option>
         }
     </select> <br />
     TimeSlot:
-    <input name="TimeSlot" />
+    <input asp-for="SessionAdd.TimeSlot" name="TimeSlot" />
     <button type="submit">Add</button>
     <h2>@Model.Message</h2>
 </form>
