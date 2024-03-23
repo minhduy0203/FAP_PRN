@@ -48,8 +48,27 @@ namespace FAPWeb_Se1705.Repository
             if (session != null)
             {
                 context.Sessions.Remove(session);
-                context.SaveChanges();  
+                context.SaveChanges();
             }
+        }
+
+        public Session UpdateSession(Session session)
+        {
+            Session UpdateSession = context.Sessions.FirstOrDefault(s => s.Id == session.Id);
+            if (session != null)
+            {
+                UpdateSession.TimeSlot = session.TimeSlot;
+                UpdateSession.CourseCode = session.CourseCode;
+                UpdateSession.InstructorCode = session.InstructorCode;
+                UpdateSession.RoomName = session.RoomName;
+                UpdateSession.GroupName = session.GroupName;
+                context.SaveChanges();
+            }
+            else
+            {
+                return null;
+            }
+            return session;
         }
     }
 }

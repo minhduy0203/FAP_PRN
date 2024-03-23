@@ -1,0 +1,49 @@
+﻿@page
+@model FAPWeb_Se1705.Pages.SessionPage.UpdateModel
+@{
+}
+<h1>Update Session</h1>
+@if (Model.Session != null)
+{
+
+    <form method="post">
+        <input type="hidden" name="Id" value="@Model.Session.Id" />
+        Course:
+        <select asp-for="Session.CourseCode" name="CourseCode">
+            @foreach (Course course in Model.Courses)
+            {
+                <option value="@course.CourseCode">@course.CourseCode</option>
+            }
+        </select> <br />
+        Group:
+        <select asp-for="Session.GroupName" name="GroupName">
+            @foreach (Group group in Model.Groups)
+            {
+                <option value="@group.GroupName">@group.GroupName</option>
+            }
+        </select> <br />
+        InstructorCode
+        <select asp-for="Session.InstructorCode" name="InstructorCode">
+            @foreach (Instructor instructor in Model.Instructors)
+            {
+                <option value="@instructor.InstructorCode">@instructor.FirstName @instructor.LastName</option>
+            }
+        </select> <br />
+        Room name:
+        <select asp-for="Session.RoomName" name="RoomName">
+            @foreach (Room room in Model.Rooms)
+            {
+                <option value="@room.RoomName">@room.RoomName</option>
+            }
+        </select> <br />
+        TimeSlot:
+        <input asp-for="Session.TimeSlot" name="TimeSlot" />
+        <button type="submit">Update</button>
+        <h2>@Model.Message</h2>
+    </form>
+
+}
+else
+{
+    <h1>Session not found</h1>
+}

@@ -54,5 +54,10 @@ namespace FAPWeb_Se1705.Service
         {
             repostiory.RemoveSession(id);
         }
+
+        public Session UpdateSession(Session session)
+        {
+            return repostiory.UpdateSession(session);
+        }
     }
 }

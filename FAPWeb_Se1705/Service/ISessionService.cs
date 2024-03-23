@@ -12,5 +12,7 @@ namespace FAPWeb_Se1705.Service
         public Session GetSession(int id);
 
         public void RemoveSession(int id);
+
+        public Session UpdateSession(Session session);
     }
 }
