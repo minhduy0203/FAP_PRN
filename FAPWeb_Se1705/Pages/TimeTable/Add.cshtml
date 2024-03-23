@@ -5,14 +5,35 @@
 
 <form method="post">
     Course:
-    <input name="CourseCode" />
+    <select name="CourseCode">
+        @foreach (Course course in Model.Courses)
+        {
+            <option value="@course.CourseCode">@course.CourseCode</option>
+        }
+    </select> <br />
     Group:
-    <input name="GroupName" />
+    <select name="GroupName">
+        @foreach (Group group in Model.Groups)
+        {
+            <option value="@group.GroupName">@group.GroupName</option>
+        }
+    </select> <br />
     InstructorCode
-    <input name="InstructorCode" />
+    <select name="InstructorCode">
+        @foreach (Instructor instructor in Model.Instructors)
+        {
+            <option value="@instructor.InstructorCode">@instructor.FirstName @instructor.LastName</option>
+        }
+    </select> <br />
     Room name:
-    <input name="RoomName" />
+    <select name="RoomName">
+        @foreach (Room room in Model.Rooms)
+        {
+            <option value="@room.RoomName">@room.RoomName</option>
+        }
+    </select> <br />
     TimeSlot:
     <input name="TimeSlot" />
-    <button type="submit">Add </button>
+    <button type="submit">Add</button>
+    <h2>@Model.Message</h2>
 </form>

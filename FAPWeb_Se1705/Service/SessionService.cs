@@ -12,6 +12,11 @@ namespace FAPWeb_Se1705.Service
             this.repostiory = repostiory;
         }
 
+        public void AddSession(Session session)
+        {
+            repostiory.AddSession(session);
+        }
+
         public void AddSessions(List<Session> sessions)
         {
             repostiory.AddSessions(sessions);

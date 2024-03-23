@@ -11,6 +11,12 @@ namespace FAPWeb_Se1705.Repository
             this.context = context;
         }
 
+        public void AddSession(Session session)
+        {
+            context.Sessions.Add(session);
+            context.SaveChanges();
+        }
+
         public void AddSessions(List<Session> sessions)
         {
             context.Sessions.AddRange(sessions);

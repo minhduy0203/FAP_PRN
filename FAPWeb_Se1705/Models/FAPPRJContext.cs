@@ -43,10 +43,9 @@ namespace FAPWeb_Se1705.Models
                 entity.ToTable("Course");
 
                 entity.Property(e => e.CourseCode)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("course_code")
-                    .IsFixedLength();
+                    .HasColumnName("course_code");
 
                 entity.Property(e => e.CourseName)
                     .HasMaxLength(150)
@@ -62,10 +61,9 @@ namespace FAPWeb_Se1705.Models
                 entity.ToTable("Group");
 
                 entity.Property(e => e.GroupName)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("groupName")
-                    .IsFixedLength();
+                    .HasColumnName("groupName");
             });
 
             modelBuilder.Entity<Instructor>(entity =>
@@ -75,10 +73,9 @@ namespace FAPWeb_Se1705.Models
                 entity.ToTable("Instructor");
 
                 entity.Property(e => e.InstructorCode)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("instructorCode")
-                    .IsFixedLength();
+                    .HasColumnName("instructorCode");
 
                 entity.Property(e => e.Dob)
                     .HasColumnType("date")
@@ -115,10 +112,9 @@ namespace FAPWeb_Se1705.Models
                 entity.ToTable("Room");
 
                 entity.Property(e => e.RoomName)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("roomName")
-                    .IsFixedLength();
+                    .HasColumnName("roomName");
             });
 
             modelBuilder.Entity<Session>(entity =>
@@ -128,34 +124,29 @@ namespace FAPWeb_Se1705.Models
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CourseCode)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("course_code")
-                    .IsFixedLength();
+                    .HasColumnName("course_code");
 
                 entity.Property(e => e.GroupName)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("groupName")
-                    .IsFixedLength();
+                    .HasColumnName("groupName");
 
                 entity.Property(e => e.InstructorCode)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("instructorCode")
-                    .IsFixedLength();
+                    .HasColumnName("instructorCode");
 
                 entity.Property(e => e.RoomName)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("roomName")
-                    .IsFixedLength();
+                    .HasColumnName("roomName");
 
                 entity.Property(e => e.TimeSlot)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("timeSlot")
-                    .IsFixedLength();
+                    .HasColumnName("timeSlot");
 
                 entity.HasOne(d => d.CourseCodeNavigation)
                     .WithMany(p => p.Sessions)

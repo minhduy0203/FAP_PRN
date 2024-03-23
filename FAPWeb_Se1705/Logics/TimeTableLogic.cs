@@ -73,38 +73,47 @@ namespace FAPWeb_Se1705.Logics
 
         public static bool ValidateGroup(string groupA, string groupB)
         {
-            return groupA == groupB;
+            groupA = groupA.Trim();
+            groupB = groupB.Trim();
+            return groupA.Equals(groupB);
         }
 
         public static bool ValidateTeacher(string teacherA, string teacherB)
         {
-            return teacherA == teacherB;
+            teacherA = teacherA.Trim();
+            teacherB = teacherB.Trim();
+            return teacherA.Equals(teacherB);
         }
 
         public static bool ValidateSubject(string subA, string subB)
         {
-            return subA == subB;
+            subA = subA.Trim();
+            subB = subB.Trim();
+            return subA.Equals(subB);
         }
 
         public static bool ValidateRoom(string roomA, string roomB)
         {
-            return roomA == roomB;
+            roomA = roomA.Trim();
+            roomB = roomB.Trim();
+            return roomA.Equals(roomB);
         }
 
         public static bool ValidateTimeSlot(string timeA, string timeB)
         {
             bool result = false;
-            char[] timesA = timeA.ToCharArray();
-            char[] timesB = timeB.ToCharArray();
+           
+            timeA = timeA.Trim();
+            timeB = timeB.Trim();
 
-            if (timesA.Length != 3 || timesB.Length != 3)
+            if (timeA.Length != 3 || timeB.Length != 3)
             {
                 throw new Exception("Input is not valid");
             }
 
-            if (timesA[0] == timesB[0])
+            if (timeA[0] == timeB[0])
             {
-                if (timesA[1] == timesB[1] || timesA[2] == timesB[2])
+                if (timeA[1] == timeB[1] || timeA[2] == timeB[2])
                 {
                     result = true;
                 }
