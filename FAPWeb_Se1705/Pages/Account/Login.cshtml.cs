@@ -68,7 +68,7 @@ namespace FAPWeb_Se1705.Pages.Authentication
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             //Redirect to login page    
-            return Redirect("/Authentication/Login");
+            return Redirect("/Account/Login");
         }
     }
 }

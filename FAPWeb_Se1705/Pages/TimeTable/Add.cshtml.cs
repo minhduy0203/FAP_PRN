@@ -2,12 +2,14 @@ using FAPWeb_Se1705.Hubs;
 using FAPWeb_Se1705.Logics;
 using FAPWeb_Se1705.Models;
 using FAPWeb_Se1705.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR;
 
 namespace FAPWeb_Se1705.Pages.TimeTable
 {
+    [Authorize(Roles ="TEACHER")]
     public class AddModel : PageModel
     {
 
