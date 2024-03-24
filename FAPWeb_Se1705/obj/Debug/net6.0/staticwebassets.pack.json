@@ -1,6 +1,26 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js.map"
+    },
+    {
+      "Id": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js.map"
+    },
+    {
       "Id": "C:\\Users\\minhd\\Desktop\\PE\\FAPWeb_Se1705\\FAPWeb_Se1705\\wwwroot\\lib\\tailwindcss\\base.css",
       "PackagePath": "staticwebassets\\lib\\tailwindcss\\base.css"
     },

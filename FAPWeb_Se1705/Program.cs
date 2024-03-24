@@ -1,3 +1,4 @@
+using FAPWeb_Se1705.Hubs;
 using FAPWeb_Se1705.Logics;
 using FAPWeb_Se1705.Models;
 using FAPWeb_Se1705.Repository;
@@ -17,11 +18,13 @@ namespace FAPWeb_Se1705
 
             app.UseStaticFiles();
             app.MapRazorPages();
+            app.MapHub<SessionHub>("/sessionhub");
             app.Run();
         }
 
         private static void ConfigureService(WebApplicationBuilder builder)
         {
+
             builder.Services.AddDbContext<FAPPRJContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("MyConstr")));
             builder.Services.AddTransient<TimeTableLogic>();
 
@@ -40,8 +43,10 @@ namespace FAPWeb_Se1705
             builder.Services.AddTransient<IInstructorRepository, InstructorRepository>();
             builder.Services.AddTransient<IInstructorService, InstructorService>();
 
-           
+
             builder.Services.AddRazorPages();
+            builder.Services.AddSignalR();
+
 
         }
     }
