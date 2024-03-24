@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/minhd/Desktop/PE/FAPWeb_Se1705/FAPWeb_Se1705/Pages/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/minhd/Desktop/PE/FAPWeb_Se1705/FAPWeb_Se1705/Pages/SessionPage/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vzc2lvblBhZ2VcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

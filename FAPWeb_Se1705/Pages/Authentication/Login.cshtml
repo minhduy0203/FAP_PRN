@@ -1,0 +1,12 @@
+﻿@page
+@model FAPWeb_Se1705.Pages.Authentication.LoginModel
+@{
+}
+<form method="post">
+    Email
+    <input type="text" asp-for="UserLogin.Email" /> <br />
+    Password
+    <input type="password" asp-for="UserLogin.Password" /> <br />
+    <button type="submit">Login</button>
+    <h2>@Model.Message</h2>
+</form>

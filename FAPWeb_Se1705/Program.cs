@@ -3,6 +3,7 @@ using FAPWeb_Se1705.Logics;
 using FAPWeb_Se1705.Models;
 using FAPWeb_Se1705.Repository;
 using FAPWeb_Se1705.Service;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 namespace FAPWeb_Se1705
@@ -17,6 +18,11 @@ namespace FAPWeb_Se1705
             var app = builder.Build();
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
             app.MapRazorPages();
             app.MapHub<SessionHub>("/sessionhub");
             app.Run();
@@ -46,6 +52,8 @@ namespace FAPWeb_Se1705
 
             builder.Services.AddRazorPages();
             builder.Services.AddSignalR();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 
         }
