@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
+using System.Text;
 
 namespace FAPWeb_Se1705.Pages.TimeTable
 {
@@ -23,18 +24,24 @@ namespace FAPWeb_Se1705.Pages.TimeTable
         {
         }
 
-        public void OnPost(IFormFile Upload)
+        public FileResult OnPost(IFormFile Upload)
         {
+            String result = "";
             try
             {
                 List<Session> sessions = TimeTableLogic.GetValidSessions(Upload.OpenReadStream());
-                sessionService.AddSessions(sessions);
+                result = sessionService.AddSessions(sessions);
+
+
             }
             catch (Exception ex)
             {
 
-                Message = "Import failed";
+                result = "Import failed";
             }
+
+            return File(Encoding.UTF8.GetBytes(result.ToString()), "text/csv", "Sessions.csv");
+
 
         }
     }

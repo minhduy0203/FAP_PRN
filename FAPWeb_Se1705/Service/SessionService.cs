@@ -1,6 +1,7 @@
 ﻿using FAPWeb_Se1705.Logics;
 using FAPWeb_Se1705.Models;
 using FAPWeb_Se1705.Repository;
+using System.Text;
 
 namespace FAPWeb_Se1705.Service
 {
@@ -23,30 +24,35 @@ namespace FAPWeb_Se1705.Service
             repostiory.AddSession(session);
         }
 
-        public void AddSessions(List<Session> sessions)
+        public String AddSessions(List<Session> sessions)
         {
-            List<Session> sessionsDB = repostiory.GetSessions();
-            foreach (Session session in sessions)
+            List<Session> SessionDB = GetSessions();
+            var csv = new StringBuilder();
+
+            var header = string.Format("{0},{1},{2},{3},{4},{5}", "GroupName", "InstructorCode", "CourseCode", "Timeslot", "Room", "Message");
+            csv.AppendLine(header);
+            String sessionTemp;
+            foreach (Session SessionAdd in sessions)
             {
-                session.TimeSlot = session.TimeSlot.Trim();
-                session.RoomName = session.RoomName.Trim();
-                session.GroupName = session.GroupName.Trim();
-                session.CourseCode = session.CourseCode.Trim();
-                session.InstructorCode = session.InstructorCode.Trim();
                 try
                 {
-                    if (TimeTableLogic.ValidateSession(sessionsDB, session))
+                    if (TimeTableLogic.ValidateSession(SessionDB, SessionAdd))
                     {
-                        repostiory.AddSession(session);
+                        AddSession(SessionAdd);
+                        SessionDB.Add(SessionAdd);
+                        sessionTemp = TimeTableLogic.GetSessionCSV(SessionAdd, "Add successfuly");
+                        csv.AppendLine(sessionTemp);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    sessionTemp = TimeTableLogic.GetSessionCSV(SessionAdd, ex.Message);
+                    csv.AppendLine(sessionTemp);
                     continue;
                 }
-
             }
+
+            return csv.ToString();
 
         }
 

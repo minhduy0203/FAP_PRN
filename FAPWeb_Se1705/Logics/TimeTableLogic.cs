@@ -1,5 +1,6 @@
 ﻿using FAPWeb_Se1705.Models;
 using Microsoft.VisualBasic.FileIO;
+using System.Text;
 
 namespace FAPWeb_Se1705.Logics
 {
@@ -32,19 +33,20 @@ namespace FAPWeb_Se1705.Logics
                     Session.TimeSlot = Timeslot;
                     Session.CourseCode = CourseCode;
                     Session.RoomName = Room;
-                    try
-                    {
-                        if (ValidateSession(result, Session))
-                        {
-                            result.Add(Session);
-                        }
+                    result.Add(Session);
+                    //try
+                    //{
+                    //    if (ValidateSession(result, Session))
+                    //    {
+                    //        result.Add(Session);
+                    //    }
 
-                    }
-                    catch (Exception)
-                    {
+                    //}
+                    //catch (Exception)
+                    //{
 
-                        continue;
-                    }
+                    //    continue;
+                    //}
 
 
                 }
@@ -78,7 +80,7 @@ namespace FAPWeb_Se1705.Logics
 
                 if (ValidateRoom(sessionCheck.RoomName, s.RoomName) && ValidateSubject(sessionCheck.CourseCode, s.CourseCode))
                 {
-                    throw new Exception("room and subject is duplicated ");
+                    throw new Exception("Room and subject is duplicated ");
                     //return false;
                 }
             }
@@ -160,6 +162,23 @@ namespace FAPWeb_Se1705.Logics
 
             }
             return result;
+        }
+
+        public static String GetSessionCSV(Session session, string message)
+        {
+            var csv = new StringBuilder();
+            if (session != null)
+            {
+                string GroupName = session.GroupName;
+                string InstructorCode = session.InstructorCode;
+                string CourseCode = session.CourseCode;
+                string Timeslot = session.TimeSlot;
+                string Room = session.RoomName;
+                var newLine = string.Format("{0},{1},{2},{3},{4},{5}", GroupName, InstructorCode, CourseCode, Timeslot, Room, message);
+                csv.Append(newLine);
+
+            }
+            return csv.ToString();
         }
     }
 }

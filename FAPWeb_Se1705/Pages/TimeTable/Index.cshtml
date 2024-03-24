@@ -3,67 +3,78 @@
 @{
     Layout = "_Layout";
 }
-<form method="get">
-    Weekday:
-    <select asp-for="day" name="day">
+<form class="max-w-sm mx-auto" method="get">
+    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Weekday</label>
+    <select asp-for="day" name="day" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
         @for (int i = 2; i <= 8; i++)
         {
             <option value="@i">Thứ @i</option>
         }
     </select>
-    <button type="submit">Search</button>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
 </form>
-<table>
-    <tr>
-        <td>Room</td>
-        <td>Slot 1</td>
-        <td>Slot 2</td>
-        <td>Slot 3</td>
-        <td>Slot 4</td>
 
-    </tr>
-    @foreach (Room room in Model.Rooms)
-    {
-        <tr>
-            <td>@room.RoomName</td>
-            @for (int i = 1; i <= 4; i++)
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">Room</th>
+                <th scope="col" class="px-6 py-3">Slot 1</th>
+                <th scope="col" class="px-6 py-3">Slot 2</th>
+                <th scope="col" class="px-6 py-3">Slot 3</th>
+                <th scope="col" class="px-6 py-3">Slot 4</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (Room room in Model.Rooms)
             {
-                if (i == 1 || i == 2)
-                {
-                    List<Session> sessions = Model.Sessions
-                    .Where(s => s.TimeSlot[0] == 'A' && s.RoomName == room.RoomName && s.TimeSlot[i] == Model.day)
-                    .ToList();
-                    <td>
-                        @foreach (Session session in sessions)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">@room.RoomName</th>
+                    @for (int i = 1; i <= 4; i++)
+                    {
+                        if (i == 1 || i == 2)
                         {
-                            <span>
-                                @session.CourseCode - @session.GroupName - @session.InstructorCode
-                            </span>
-                            <a asp-page="/SessionPage/Detail" asp-route-id="@session.Id" asp->View Detail</a>
-                            <br />
+                            List<Session> sessions = Model.Sessions
+                            .Where(s => s.TimeSlot[0] == 'A' && s.RoomName == room.RoomName && s.TimeSlot[i] == Model.day)
+                            .ToList();
+                            <td class="px-6 py-4">
+                                @foreach (Session session in sessions)
+                                {
+                                    <span>
+                                        @session.CourseCode - @session.GroupName - @session.InstructorCode
+                                    </span>
+                                    <a asp-page="/SessionPage/Detail" asp-route-id="@session.Id" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">View Detail</a>
+                                    <br />
 
+                                }
+                            </td>
                         }
-                    </td>
-                }
-                else if (i == 3 || i == 4)
-                {
-                    List<Session> sessions = Model.Sessions
-                    .Where(s => s.TimeSlot[0] == 'P' && s.RoomName == room.RoomName && s.TimeSlot[i - 2] == Model.day)
-                    .ToList();
-                    <td>
-
-                        @foreach (Session session in sessions)
+                        else if (i == 3 || i == 4)
                         {
-                            <span>
-                                @session.CourseCode - @session.GroupName - @session.InstructorCode
-                            </span>
-                            <a asp-page="/SessionPage/Detail" asp-route-id="@session.Id" asp->View Detail</a>
-                            <br />
+                            List<Session> sessions = Model.Sessions
+                            .Where(s => s.TimeSlot[0] == 'P' && s.RoomName == room.RoomName && s.TimeSlot[i - 2] == Model.day)
+                            .ToList();
+                            <td class="px-6 py-4">
+
+                                @foreach (Session session in sessions)
+                                {
+                                    <span>
+                                        @session.CourseCode - @session.GroupName - @session.InstructorCode
+                                    </span>
+                                    <a asp-page="/SessionPage/Detail" asp-route-id="@session.Id" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">View Detail</a>
+                                    <br />
+                                }
+                            </td>
                         }
-                    </td>
-                }
+                    }
+                </tr>
             }
-        </tr>
-    }
-</table>
+        </tbody>
+    </table>
+</div>
+
+
+

@@ -61,3 +61,4 @@ C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\bin\Debug\net6.0\runtimes\
 C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\obj\Debug\net6.0\FAPWeb_Se1705.csproj.CopyComplete
 C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\obj\Debug\net6.0\FAPWeb_Se1705.RazorAssemblyInfo.cache
 C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\obj\Debug\net6.0\FAPWeb_Se1705.RazorAssemblyInfo.cs
+C:\Users\minhd\Desktop\PE\FAPWeb_Se1705\FAPWeb_Se1705\bin\Debug\net6.0\libman.json
